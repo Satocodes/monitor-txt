@@ -6,9 +6,13 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import tkinter as tk
 from tkinter import filedialog, scrolledtext, ttk
+from dotenv import load_dotenv
+
+# Cargar variables de entorno desde .env
+load_dotenv()
 
 OPEN_WEBUI_API_URL = "http://localhost:9090/api/chat/completions"  # Conectar con Open WebUI
-API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzYzOTdmLThhODItNDgzMy1iMjQ2LWU3YTY4OTNmMzBkMyJ9.IAZCthFCQRkD8Z63zp-tsA9MGscS_AwAOZEsHEDiTlE"  # Reemplazar con la API Key de Open WebUI
+API_KEY = os.getenv("API_KEY")
 
 class TxtFileHandler(FileSystemEventHandler):
     def __init__(self, text_widget, model_var):
